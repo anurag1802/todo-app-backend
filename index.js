@@ -1,12 +1,14 @@
 const dotenv = require("dotenv");
 dotenv.config();
 const express = require("express");
+var cors = require("cors");
 const app = express();
 const mongoose = require("mongoose");
 
 const todoRoute = require("./routes/todo.routes.js");
 
 //middleware
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/todos", todoRoute);
